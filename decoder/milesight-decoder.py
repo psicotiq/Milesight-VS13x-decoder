@@ -117,7 +117,7 @@ def iot_create_function(function_name, device, line, device_id):
         result = requests.post(f"{Config.IOTOPEN_BASEURL}/api/v2/functionx/{Config.IOTOPEN_INSTALLATION_ID}", headers=headers, auth=login, data=json.dumps(payload) ).json()
         return result
     else:
-        return iot_functionexists.json[0]
+        return iot_functionexists
         #result = requests.put(f"{Config.IOTOPEN_BASEURL}/api/v2/functionx/{Config.IOTOPEN_INSTALLATION_ID}/{iot_functionexists.json()[0].get('id')}", headers=headers, auth=login, data=json.dumps(payload) )
         #return result
 
