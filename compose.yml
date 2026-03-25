@@ -1,7 +1,7 @@
 services:
     z2m_converter:
         build: ./decoder
-        container_name: milesight_converter
+        container_name: ${DECODER_NAME:-milesight_decoder}
         restart: unless-stopped
         environment:
             - IOTOPEN_MQTT_HOST=${IOTOPEN_MQTT_HOST}
