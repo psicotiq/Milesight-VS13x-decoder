@@ -2,8 +2,8 @@
 
 echo "=== .env Generator ==="
 
-read -p "MQTT Host [prod.iotjonkopingslan.se]: " mqtt_host
-mqtt_host=${mqtt_host:-prod.iotjonkopingslan.se}
+read -p "MQTT Host: " mqtt_host
+mqtt_host=${mqtt_host}
 
 read -p "MQTT Port [8883]: " mqtt_port
 mqtt_port=${mqtt_port:-8883}
@@ -18,8 +18,8 @@ read -p "Installation ID: " installation_id
 read -p "MQTT Client Name: " mqtt_client_name
 
 
-read -p "Base URL [https://lynx-jkpg.iotopen.se]: " baseurl
-baseurl=${baseurl:-https://lynx-jkpg.iotopen.se}
+read -p "Base URL: " baseurl
+baseurl=${baseurl}
 
 cat <<EOF > .env
 IOTOPEN_MQTT_HOST=$mqtt_host
