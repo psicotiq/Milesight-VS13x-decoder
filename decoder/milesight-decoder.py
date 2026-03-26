@@ -29,7 +29,7 @@ class Config:
     IOTOPEN_INSTALLATION_ID = int(os.getenv("IOTOPEN_INSTALLATION_ID",0))
     IOTOPEN_CLIENT_ID = int(os.getenv("IOTOPEN_CLIENT_ID",0))
     IOTOPEN_BASEURL = os.getenv("IOTOPEN_BASEURL")
-    IOTOPEN_MQTT_CLIENT_NAME = int(os.getenv("IOTOPEN_MQTT_CLIENT_NAME", "milesightdecoder"))
+    IOTOPEN_MQTT_CLIENT_NAME = os.getenv("IOTOPEN_MQTT_CLIENT_NAME", "milesightdecoder")
 
 
 
