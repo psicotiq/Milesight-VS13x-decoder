@@ -3,10 +3,9 @@ from requests.auth import HTTPBasicAuth
 import logging
 import paho.mqtt.client as mqtt
 import ssl
-import random
 import time
 import json
-from datetime import datetime
+#from datetime import datetime
 
 import os
 from dotenv import load_dotenv
@@ -16,7 +15,7 @@ import sys
 import threading
 
 #Milesight decoder
-__version__ = "0.9.1"
+__version__ = "0.9.2"
 
 
 #Only read local .env file for debug. remove when done and use OS environtment inside docker
@@ -30,6 +29,7 @@ class Config:
     IOTOPEN_INSTALLATION_ID = int(os.getenv("IOTOPEN_INSTALLATION_ID",0))
     IOTOPEN_CLIENT_ID = int(os.getenv("IOTOPEN_CLIENT_ID",0))
     IOTOPEN_BASEURL = os.getenv("IOTOPEN_BASEURL")
+    IOTOPEN_MQTT_CLIENT_NAME = int(os.getenv("IOTOPEN_MQTT_CLIENT_NAME", "milesightdecoder"))
 
 
 
@@ -65,7 +65,7 @@ def decode_incomming(client, userdata, msg):
 
     if device.get("line_periodic_data")!=None:
         for line in device.get("line_periodic_data"):
-            #logger.info(f'{line}')
+            logger.debug(f'{line}')
             iot_create_function('in',device_info, line, device_id)
             iot_create_function('out',device_info, line, device_id)
             client_iot.publish(f'{Config.IOTOPEN_CLIENT_ID}/obj/eth/{line.get("line_uuid")}/in',json.dumps(iot_open_value(line.get("in"))))
@@ -158,8 +158,7 @@ def main():
 
     login = HTTPBasicAuth(Config.IOTOPEN_MQTT_USERNAME, Config.IOTOPEN_MQTT_PASSWORD)
     # MQTT IoT-Open
-    client_id = f'z2m-mqtt-{random.randint(0, 9000)}'
-    client_iot = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, protocol=mqtt.MQTTv5, client_id=client_id)
+    client_iot = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, protocol=mqtt.MQTTv5, client_id=Config.IOTOPEN_MQTT_CLIENT_NAME)
     client_iot.tls_set(certfile=None,
                 keyfile=None,
                 cert_reqs=ssl.VERIFY_DEFAULT)

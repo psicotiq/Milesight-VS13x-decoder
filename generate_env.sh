@@ -15,6 +15,9 @@ echo
 read -p "Client ID: " client_id
 read -p "Installation ID: " installation_id
 
+read -p "MQTT Client Name: " mqtt_client_name
+
+
 read -p "Base URL [https://lynx-jkpg.iotopen.se]: " baseurl
 baseurl=${baseurl:-https://lynx-jkpg.iotopen.se}
 
@@ -23,6 +26,7 @@ IOTOPEN_MQTT_HOST=$mqtt_host
 IOTOPEN_MQTT_PORT=$mqtt_port
 IOTOPEN_MQTT_USERNAME=$mqtt_username
 IOTOPEN_MQTT_PASSWORD=$mqtt_password
+IOTOPEN_MQTT_CLIENT_NAME=$mqtt_client_name
 IOTOPEN_CLIENT_ID=$client_id
 IOTOPEN_INSTALLATION_ID=$installation_id
 IOTOPEN_BASEURL=$baseurl
