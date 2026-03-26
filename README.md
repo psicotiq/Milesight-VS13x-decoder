@@ -6,6 +6,9 @@ This decoder will transform incomming MQTT data from the sensors and create Func
 
 Today it supports only Linecross counting. I will add child counter as well as zones in comming versions.
 
+## License
+This project is licensed under the MIT License.
+
 ## Installation
 First create a Installation in IoT-Open that will have the Milesight sensors and note the client_ID and installation_ID.
 Also prepare a API account and key.
