@@ -15,7 +15,7 @@ import sys
 import threading
 
 #Milesight decoder
-__version__ = "0.10.0"
+__version__ = "0.10.1"
 
 
 #Only read local .env file for debug. remove when done and use OS environtment inside docker
